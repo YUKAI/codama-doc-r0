@@ -48,6 +48,8 @@ Sebastienのライブラリを利用するためには、Sebastienにアクセ�
 
 以下のコマンドを利用して、device_idをリクエストします。`client_secret`は、ロボスタトークプロバイダのものを利用できます。
 
+client_secret: e68f2ef7-1e68-4e92-b48f-d2f92b2daa4e
+
 ```
 $ curl https://mds.sebastien.ai/api/issue_device_id -X POST -H 'Content-Type:application/json' -d '{"client_secret": "e68f2ef7-1e68-4e92-b48f-d2f92b2daa4e"}' 
 {
@@ -60,11 +62,17 @@ $ curl https://mds.sebastien.ai/api/issue_device_id -X POST -H 'Content-Type:app
 
 Sebastienのユーザダッシュボード[https://users.sebastien.ai/dashboard/](https://users.sebastien.ai/dashboard/)にアクセスし、手順1で取得した、 `device_id` を登録します。
 
-* ユーザダッシュボードに表示される「新規デバイス登録」を押します。
+* ユーザダッシュボードに表示される「新規デバイス登録」をクリックします。
+
+<img width="500" alt="dashboard" src="https://user-images.githubusercontent.com/1875915/50274589-f4bf1800-0480-11e9-8819-4a25003e89ad.png">
 
 * 手順1で取得した、`device_id`を入力して「登録」を押します。
 
+<img width="500" alt="adddevice" src="https://user-images.githubusercontent.com/1875915/50274640-0f918c80-0481-11e9-89cc-c5fed5c04186.png">
+
 * ロボスタトークのデバイスとして登録されたことを確認します。
+
+<img width="500" alt="robotstart" src="https://user-images.githubusercontent.com/1875915/50274661-1e783f00-0481-11e9-8dd4-8a077969ff32.png">
 
 
 ### 手順3. device_tokenを取得する。
