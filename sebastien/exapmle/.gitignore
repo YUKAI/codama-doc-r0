@@ -1,0 +1,7 @@
+__pycache__/
+env/
+*.json
+*.py[cod]
+*$py.class
+*~
+\#*\#
