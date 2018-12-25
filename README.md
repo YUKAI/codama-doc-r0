@@ -15,3 +15,8 @@ codamaを利用するためにはRaspberry Piが必要です。codamaはRaspberr
 * Rasbperry Pi 2B v1.2
 * Rasbperry Pi 2B v1.1
 
+### 免責事項
+
+本ソフトウエア及びサービスの利用については、以下の免責事項に同意し、承諾したものとします。
+
+[免責事項](https://github.com/YUKAI/codama-doc/blob/master/EULA.pdf)
