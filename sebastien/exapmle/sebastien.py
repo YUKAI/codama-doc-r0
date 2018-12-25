@@ -6,6 +6,8 @@ inspath = '../.lib/lib/python%d.%d/site-packages' % ver
 sys.path.insert(0, osp.abspath(inspath))
 
 import speak
+from speak import Speak, NluMetaData
+
 
 sdk = None
 
@@ -23,6 +25,18 @@ def unmute():
 
 def on_started():
     print ("on_started")
+
+    # First
+    global sdk
+
+    # アプリケーション起動時に挨拶文を送信することにより、
+    # Sebastienから返信メッセージが再生され起動確認が出来る。
+    metaData = NluMetaData()
+    metaData.cacheFlag = False
+    # metaData.initTalkFlag = True
+    metaData.voiceText = "こんにちは"
+    sdk.put_meta(metaData)
+
     return
 
 
@@ -66,6 +80,14 @@ def on_cache_failed():
 
 def on_gain_value(data):
     print ("on_gain_value", data)
+    return
+
+def cancel_play():
+    print ("cancel play")
+
+    global sdk
+    sdk.cancel_play()
+
     return
 
 
