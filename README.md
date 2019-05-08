@@ -6,7 +6,9 @@ codamaはウェイク・アップ・ワードを自由に設定できる、あ�
 
 codamaを利用するためにはRaspberry Piが必要です。codamaはRaspberry Pi標準の40PINに接続し作動します。
 
-こだまの使い方は[wiki](https://github.com/YUKAI/codama-doc/wiki)を参照してください。
+![IMG_0816 2](https://user-images.githubusercontent.com/14104069/57343445-683a9b00-717e-11e9-8a18-b7017bae8a34.JPG)
+
+codamaの使い方は[wiki](https://github.com/YUKAI/codama-doc/wiki)を参照してください。
 
 ### 動作確認済みのRaspberry Pi
 * Rasbperry Pi 3B+
