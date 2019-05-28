@@ -4,8 +4,8 @@ codamaを取り付けたRaspberryPiはNTTドコモが提供する[/project:SEBAS
 
 まず、以下の設定ガイドを参照し、codamaのセットアップを終わらせてください。
 
-* [Raspberry Piの設定ガイド](Raspberry-Pi-Setup)
-* [codamaの取り付けおよび設定ガイド](Codama-Setup)
+* [Raspberry Piの設定ガイド](https://github.com/YUKAI/codama-doc/wiki/Raspberry-Pi-Setup)
+* [codamaの取り付けおよび設定ガイド](https://github.com/YUKAI/codama-doc/wiki/Codama-Setup)
 
 ## 1. スピーカーの取り付け
 
@@ -29,14 +29,14 @@ Sebastienを利用するためのライブラリをインストールします�
 * python3系のインストール
 
 ```
-$ cd wheel
+$ cd ~/codama/codama-doc/sebastien/wheel
 $ sudo pip3 install speak-1.1.1-cp35-cp35m-linux_armv7l.whl
 ```
 
 * python2系のインストール
 
 ```
-$ cd wheel
+$ cd ~/codama/codama-doc/sebastien/wheel
 $ sudo pip install speak-1.1.1-cp27-cp27mu-linux_armv7l.whl
 ```
 
@@ -74,7 +74,7 @@ Sebastienのユーザダッシュボード[https://users.sebastien.ai/dashboard/
 
 <img width="500" alt="robotstart" src="https://user-images.githubusercontent.com/1875915/50274661-1e783f00-0481-11e9-8dd4-8a077969ff32.png">
 
-
+<a id="get-device-token"></a>
 ### 手順3. device_tokenを取得する。
 
 * 以下のコマンドを利用して、`device_token`を取得します。取得した`device_token`は、サンプルプログラムで利用します。
@@ -99,6 +99,11 @@ codamaはウェイク・アップ・ワードを検出するとGPIOの27をHIGH�
 ### 手順1. device_tokenを記述する
 
 * `config.json.tmp` をコピーして、`config.json`をエディターで開き、`AccessToken` に取得した`device_token` を入力します。
+
+```
+$ cp ./config.json.tmp ./config.json
+$ vi ./config.json
+```
 
 ```
 {
@@ -138,4 +143,12 @@ codamaはウェイク・アップ・ワードを検出するとGPIOの27をHIGH�
 $ python3 main.py
 ```
 
+#### 補足)エラーメッセージ発生時の対処（Device Token の取り直し）
 
+上記コマンド実行時に
+```
+UDS:Signature Expired(40102)
+```
+
+というエラーが発生する場合は [手順3. device_tokenを取得する。](#get-device-token) 
+からやり直してください。
