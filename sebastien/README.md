@@ -2,10 +2,11 @@
 
 codamaを取り付けたRaspberryPiはNTTドコモが提供する[/project:SEBASTIEN/](https://dev.smt.docomo.ne.jp/?p=common_page&p_name=sebastien_teaser)を利用して音声による対話を実装することが可能です。
 
-まず、以下の設定ガイドを参照し、codamaのセットアップを終わらせてください。
+まず、以下の設定ガイドを参照し、codamaのセットアップ、ウェイクアップワードの作成を終わらせてください。
 
-* [Raspberry Piの設定ガイド](https://github.com/YUKAI/codama-doc/wiki/Raspberry-Pi-Setup)
-* [codamaの取り付けおよび設定ガイド](https://github.com/YUKAI/codama-doc/wiki/Codama-Setup)
+1. [Raspberry Piを設定する](https://github.com/YUKAI/codama-doc-r2/wiki/Raspberry-Pi-Setup)
+2. [codamaをRaspberry Piに取り付け、設定する](https://github.com/YUKAI/codama-doc-r2/wiki/Codama-Setup)
+3. [ウェイク・アップ・ワードの作成、動作確認をする](https://github.com/YUKAI/codama-doc-r2/wiki/regist-wake-up-word)
 
 ## 1. スピーカーの取り付け
 
