@@ -20,4 +20,4 @@ codamaの使い方は[wiki](https://github.com/YUKAI/codama-doc-r2/wiki)を参�
 
 本ソフトウエア及びサービスの利用については、以下の免責事項に同意し、承諾したものとします。
 
-[免責事項](https://github.com/YUKAI/codama-doc/blob/master/EULA.pdf)
+[免責事項](https://github.com/YUKAI/codama-doc-r2/blob/master/EULA.pdf)
