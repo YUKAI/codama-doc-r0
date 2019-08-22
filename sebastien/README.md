@@ -4,9 +4,9 @@ codamaを取り付けたRaspberryPiはNTTドコモが提供する[/project:SEBAS
 
 まず、以下の設定ガイドを参照し、codamaのセットアップ、ウェイクアップワードの作成を終わらせてください。
 
-1. [Raspberry Piを設定する](https://github.com/YUKAI/codama-doc-r2/wiki/Raspberry-Pi-Setup)
-2. [codamaをRaspberry Piに取り付け、設定する](https://github.com/YUKAI/codama-doc-r2/wiki/Codama-Setup)
-3. [ウェイク・アップ・ワードの作成、動作確認をする](https://github.com/YUKAI/codama-doc-r2/wiki/regist-wake-up-word)
+1. [Raspberry Piを設定する](https://github.com/YUKAI/codama-doc-r0/wiki/Raspberry-Pi-Setup)
+2. [codamaをRaspberry Piに取り付け、設定する](https://github.com/YUKAI/codama-doc-r0/wiki/Codama-Setup)
+3. [ウェイク・アップ・ワードの作成、動作確認をする](https://github.com/YUKAI/codama-doc-r0/wiki/regist-wake-up-word)
 
 ## 1. スピーカーの取り付け
 
@@ -30,14 +30,14 @@ Sebastienを利用するためのライブラリをインストールします�
 * python3系のインストール
 
 ```
-$ cd ~/codama/codama-doc-r2/sebastien/wheel
+$ cd ~/codama/codama-doc-r0/sebastien/wheel
 $ sudo pip3 install speak-1.1.1-cp35-cp35m-linux_armv7l.whl
 ```
 
 * python2系のインストール
 
 ```
-$ cd ~/codama/codama-doc-r2/sebastien/wheel
+$ cd ~/codama/codama-doc-r0/sebastien/wheel
 $ sudo pip install speak-1.1.1-cp27-cp27mu-linux_armv7l.whl
 ```
 
