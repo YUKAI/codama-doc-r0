@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-mixer" version="1.0">
+  <property name="sound-card" type="string" value="sndrpisimplecardAlsamixer"/>
+  <property name="sound-cards" type="empty">
+    <property name="sndrpisimplecardAlsamixer" type="array">
+      <value type="string" value="Playback"/>
+      <value type="string" value="Record"/>
+    </property>
+  </property>
+  <property name="window-height" type="int" value="400"/>
+  <property name="window-width" type="int" value="600"/>
+</channel>
