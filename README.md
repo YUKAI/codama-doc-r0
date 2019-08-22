@@ -8,7 +8,7 @@ codamaを利用するためにはRaspberry Piが必要です。codamaはRaspberr
 
 ![IMG_0816 2](https://user-images.githubusercontent.com/14104069/57343445-683a9b00-717e-11e9-8a18-b7017bae8a34.JPG)
 
-codamaの使い方は[wiki](https://github.com/YUKAI/codama-doc-r2/wiki)を参照してください。
+codamaの使い方は[wiki](https://github.com/YUKAI/codama-doc-r0/wiki)を参照してください。
 
 ### 動作確認済みのRaspberry Pi
 * Rasbperry Pi 3B+
@@ -20,4 +20,4 @@ codamaの使い方は[wiki](https://github.com/YUKAI/codama-doc-r2/wiki)を参�
 
 本ソフトウエア及びサービスの利用については、以下の免責事項に同意し、承諾したものとします。
 
-[免責事項](https://github.com/YUKAI/codama-doc-r2/blob/master/EULA.pdf)
+[免責事項](https://github.com/YUKAI/codama-doc-r0/blob/master/EULA.pdf)
