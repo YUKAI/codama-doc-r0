@@ -66,33 +66,47 @@ sudo /etc/init.d/alsa-utils restart
 
 
 # Configure the I2C - disable the default built-in driver
-sudo sed -i -e 's/#\?dtparam=i2c_arm=on/dtparam=i2c_arm=off/' /boot/config.txt
-if ! grep -q "i2c-bcm2708" /etc/modules-load.d/modules.conf; then
-  sudo sh -c 'echo i2c-bcm2708 >> /etc/modules-load.d/modules.conf'
-fi
-if ! grep -q "i2c-dev" /etc/modules-load.d/modules.conf; then
-  sudo sh -c 'echo i2c-dev >> /etc/modules-load.d/modules.conf'
-fi
-if ! grep -q "options i2c-bcm2708 combined=1" /etc/modprobe.d/i2c.conf; then
-  sudo sh -c 'echo "options i2c-bcm2708 combined=1" >> /etc/modprobe.d/i2c.conf'
-fi
-
-# Build a new I2C driver
-if [ "`uname -r | cut -d. -f1-2`" != "4.19" ] ; then
-    pushd $RPI_SETUP_DIR/i2c-gpio-param > /dev/null
-    make || exit $?
-    popd > /dev/null
-    sudo cp $RPI_SETUP_DIR/i2c-gpio-param/i2c-gpio-param.ko /lib/modules/`uname -r`/kernel/drivers/i2c/
-    sudo depmod -ae
-    if ! grep -q "i2c-gpio-param" /etc/modules-load.d/modules.conf; then
-        sudo sed -i -e '$ a i2c-gpio-param' /etc/modules-load.d/modules.conf
+if [ "`uname -r | cut -d. -f1`" != "5" ] ; then
+    sudo sed -i -e 's/#\?dtparam=i2c_arm=on/dtparam=i2c_arm=off/' /boot/config.txt
+    if ! grep -q "i2c-bcm2708" /etc/modules-load.d/modules.conf; then
+        sudo sh -c 'echo i2c-bcm2708 >> /etc/modules-load.d/modules.conf'
     fi
-    if ! grep -q "options i2c-gpio-param busid=1 sda=2 scl=3 udelay=5 timeout=100 sda_od=0 scl_od=0 scl_oo=0" /etc/modprobe.d/i2c.conf; then
-        sudo sed -i -e '$ a options i2c-gpio-param busid=3 sda=2 scl=3 udelay=5 timeout=100 sda_od=0 scl_od=0 scl_oo=0' /etc/modprobe.d/i2c.conf
+    if ! grep -q "i2c-dev" /etc/modules-load.d/modules.conf; then
+        sudo sh -c 'echo i2c-dev >> /etc/modules-load.d/modules.conf'
+    fi
+    if ! grep -q "options i2c-bcm2708 combined=1" /etc/modprobe.d/i2c.conf; then
+        sudo sh -c 'echo "options i2c-bcm2708 combined=1" >> /etc/modprobe.d/i2c.conf'
+    fi
+
+    # Build a new I2C driver
+    if [ "`uname -r | cut -d. -f1-2`" != "4.19" ] ; then
+        pushd $RPI_SETUP_DIR/i2c-gpio-param > /dev/null
+        make || exit $?
+        popd > /dev/null
+        sudo cp $RPI_SETUP_DIR/i2c-gpio-param/i2c-gpio-param.ko /lib/modules/`uname -r`/kernel/drivers/i2c/
+        sudo depmod -ae
+        if ! grep -q "i2c-gpio-param" /etc/modules-load.d/modules.conf; then
+            sudo sed -i -e '$ a i2c-gpio-param' /etc/modules-load.d/modules.conf
+        fi
+        if ! grep -q "options i2c-gpio-param busid=1 sda=2 scl=3 udelay=5 timeout=100 sda_od=0 scl_od=0 scl_oo=0" /etc/modprobe.d/i2c.conf; then
+            sudo sed -i -e '$ a options i2c-gpio-param busid=3 sda=2 scl=3 udelay=5 timeout=100 sda_od=0 scl_od=0 scl_oo=0' /etc/modprobe.d/i2c.conf
+        fi
+    else
+        if ! grep -q "dtoverlay=i2c-gpio,bus=3,i2c_gpio_sda=2,i2c_gpio_scl=3,i2c_gpio_delay_us=5,timeout-ms=100" /boot/config.txt; then
+             sudo sed -i -e '$ a dtoverlay=i2c-gpio,bus=3,i2c_gpio_sda=2,i2c_gpio_scl=3,i2c_gpio_delay_us=5,timeout-ms=100' /boot/config.txt
+        fi
     fi
 else
-    if ! grep -q "dtoverlay=i2c-gpio,bus=3,i2c_gpio_sda=2,i2c_gpio_scl=3,i2c_gpio_delay_us=5,timeout-ms=100" /boot/config.txt; then
-        sudo sed -i -e '$ a dtoverlay=i2c-gpio,bus=3,i2c_gpio_sda=2,i2c_gpio_scl=3,i2c_gpio_delay_us=5,timeout-ms=100' /boot/config.txt
+    # Enable the I2C device tree
+    sudo raspi-config nonint do_i2c 1
+    sudo raspi-config nonint do_i2c 0
+
+    # Set the I2C baudrate to 100k
+    sudo sed -i -e '/^dtparam=i2c_arm_baudrate/d' /boot/config.txt
+    sudo sed -i -e 's/dtparam=i2c_arm=on$/dtparam=i2c_arm=on\ndtparam=i2c_arm_baudrate=100000/' /boot/config.txt
+
+    if ! grep -q "i2c-dev" /etc/modules-load.d/modules.conf; then
+        sudo sh -c 'echo i2c-dev >> /etc/modules-load.d/modules.conf'
     fi
 fi
 
