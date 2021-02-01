@@ -117,6 +117,27 @@ if ! grep -q "# Run Alsa at startup so that alsamixer configures" /etc/rc.local;
     sudo sed -i -e '$i \aplay dummy > /dev/null 2>&1' /etc/rc.local
 fi
 
+# setup Utils
+if [ "`uname -m`" = "aarch64" ] ; then
+  if [ "`uname -r | cut -d. -f1`" != "5" ] ; then
+    sudo cp -p ../utils/codama_i2c-64 /usr/local/bin/codama_i2c
+    sudo cp -p ../utils/codama_dfu_i2c-64 /usr/local/bin/codama_dfu_i2c
+  else
+    sudo cp -p ../utils/codama_i2c-64.kernel5 /usr/local/bin/codama_i2c
+    sudo cp -p ../utils/codama_dfu_i2c-64.kernel5 /usr/local/bin/codama_dfu_i2c
+  fi
+  sudo cp -p ../utils/codama_usb-64 /usr/local/bin/codama_usb
+else
+  if [ "`uname -r | cut -d. -f1`" != "5" ] ; then
+    sudo cp -p ../utils/codama_i2c /usr/local/bin/codama_i2c
+    sudo cp -p ../utils/codama_dfu_i2c /usr/local/bin/codama_dfu_i2c
+  else
+    sudo cp -p ../utils/codama_i2c.kernel5 /usr/local/bin/codama_i2c
+    sudo cp -p ../utils/codama_dfu_i2c.kernel5 /usr/local/bin/codama_dfu_i2c
+  fi
+  sudo cp -p ../utils/codama_usb /usr/local/bin/codama_usb
+fi
+
 echo "To enable I2S and I2C, this Raspberry Pi must be rebooted."
 
 popd > /dev/null
