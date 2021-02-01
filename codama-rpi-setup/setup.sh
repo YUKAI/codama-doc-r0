@@ -15,8 +15,13 @@ sudo apt-get install -y raspberrypi-kernel-headers
 # Build loader and insert it into the kernel
 if [ "`uname -m`" = "armv6l" ] ; then
     sed -i 's/3f203000\.i2s/20203000\.i2s/' loader/loader.c
+    sed -i 's/fe203000\.i2s/20203000\.i2s/' loader/loader.c
+elif [ "`cat /proc/device-tree/model | grep "Raspberry Pi 4" | wc -l`" -eq "1" ] ; then
+    sed -i 's/20203000\.i2s/fe203000\.i2s/' loader/loader.c
+    sed -i 's/3f203000\.i2s/fe203000\.i2s/' loader/loader.c
 else
     sed -i 's/20203000\.i2s/3f203000\.i2s/' loader/loader.c
+    sed -i 's/fe203000\.i2s/3f203000\.i2s/' loader/loader.c
 fi
 pushd $RPI_SETUP_DIR/loader > /dev/null
 make i2s_slave
