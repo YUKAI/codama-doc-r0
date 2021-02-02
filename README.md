@@ -11,8 +11,10 @@ codamaを利用するためにはRaspberry Piが必要です。codamaはRaspberr
 codamaの使い方は[wiki](https://github.com/YUKAI/codama-doc-r0/wiki)を参照してください。
 
 ### 動作確認済みのRaspberry Pi
+* Rasbperry Pi 4B
 * Rasbperry Pi 3B+
 * Rasbperry Pi 3B
+* Rasbperry Pi 3A+
 * Rasbperry Pi 2B v1.2
 * Rasbperry Pi 2B v1.1
 
