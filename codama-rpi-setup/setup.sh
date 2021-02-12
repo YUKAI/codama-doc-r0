@@ -40,7 +40,7 @@ if [ -e ~/.asoundrc ] ; then
 fi
 if [ -e /usr/share/alsa/pulse-alsa.conf ] ; then
     sudo mv /usr/share/alsa/pulse-alsa.conf  /usr/share/alsa/pulse-alsa.conf.bak
-    sudo mv ~/.config/lxpanel/LXDE-pi/panels/panel ~/.config/lxpanel/LXDE-pi/panels/panel.bak
+    #sudo mv ~/.config/lxpanel/LXDE-pi/panels/panel ~/.config/lxpanel/LXDE-pi/panels/panel.bak
 fi
 if [ -e ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml ] ; then
   cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml.bak
