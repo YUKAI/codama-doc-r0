@@ -47,9 +47,18 @@ if [ -e ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml ] ; then
 fi
 
 # Check args for asoundrc selection. Default to VF Stereo.
-cp $RPI_SETUP_DIR/resources/asoundrc_vf ~/.asoundrc
-sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /root/.asoundrc
-
+dpkg -s lxplug-volumepulse > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    if [ ! -e /etc/asound.conf ]; then
+        sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /etc/asound.conf
+    else
+        cp $RPI_SETUP_DIR/resources/asoundrc_vf ~/.asoundrc
+        sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /root/.asoundrc
+    fi
+else
+    cp $RPI_SETUP_DIR/resources/asoundrc_vf ~/.asoundrc
+    sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /root/.asoundrc
+fi
 cp $RPI_SETUP_DIR/resources/panel ~/.config/lxpanel/LXDE-pi/panels/panel
 mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml/
 cp $RPI_SETUP_DIR/resources/xfce4-mixer.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml
