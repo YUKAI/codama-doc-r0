@@ -8,7 +8,7 @@ codamaを利用するためにはRaspberry Piが必要です。codamaはRaspberr
 
 ![IMG_0816 2](https://user-images.githubusercontent.com/14104069/57343445-683a9b00-717e-11e9-8a18-b7017bae8a34.JPG)
 
-codamaの使い方は[wiki](wiki)を参照してください。
+codamaの使い方は[wiki](../../wiki)を参照してください。
 
 ### 動作確認済みのRaspberry Pi
 * Rasbperry Pi 4B
