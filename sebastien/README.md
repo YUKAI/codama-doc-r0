@@ -43,34 +43,34 @@ $ git clone -b trial https://github.com/docomoDeveloperSupport/speak-python-samp
 $ pip3 install pyuv
 ```
 
-## 3. AIエージェント側の準備
+## 3. ドコモAIエージェントAPI側の準備
 
-ここではAIエージェントを利用する上で最小限のエージェントを作成していきます。
+ここではドコモAIエージェントAPIを利用する上で最小限のAIエージェントを作成していきます。
 
 1. [Agentcraft](https://agentcraft.sebastien.ai)にアクセスし、お手持ちのGoogleアカウントやdアカウントでログインします。
 
 <img src="https://user-images.githubusercontent.com/48305340/108954094-94a30c80-76af-11eb-9335-4520ad664886.png" width=600>
 <br><br>
 
-2. 新規エージェントを作成し、その後「新規トピック」を選択します。
+2. 新規AIエージェントを作成し、その後「新規トピック」を選択します。
 
 <img src="https://user-images.githubusercontent.com/48305340/108955275-3bd47380-76b1-11eb-9259-3665589d5d05.png" height=400>
 <img src="https://user-images.githubusercontent.com/48305340/108955397-6de5d580-76b1-11eb-9ea2-12c5c348c236.png" height=400>
 <img src="https://user-images.githubusercontent.com/48305340/108955458-8c4bd100-76b1-11eb-983d-49e86262e187.png" height=200>
 <br><br>
 
-3. 以下のように入力していきます。トピック名、セクション名はなんでもかまいません。このエージェントは「こんにちは」と話しかけると「お名前をどうぞ」と返答し、名前を言うと「XXさんですね。よろしくおねがいします」と答える設定になっています。名前の部分を抽出して`#username`という変数に代入しています。入力を終えたら保存してください。
+3. 以下のように入力していきます。トピック名、セクション名はなんでもかまいません。このAIエージェントは「こんにちは」と話しかけると「お名前をどうぞ」と返答し、名前を言うと「XXさんですね。よろしくおねがいします」と答える設定になっています。名前の部分を抽出して`#username`という変数に代入しています。入力を終えたら保存してください。
 
 <img src="https://user-images.githubusercontent.com/48305340/109259525-b92dee80-783f-11eb-8a47-5b2cbe4ce8b6.jpg" width=1000>
 <br><br>
 
-4. 画面右下の青いアイコンからエージェントのテストができます。上の設定ができていれば以下のように動作します。
+4. 画面右下の青いアイコンからAIエージェントのテストができます。上の設定ができていれば以下のように動作します。
 
 <img src="https://user-images.githubusercontent.com/48305340/109259803-4f621480-7840-11eb-9137-36d64b6f2b9d.png" width=250>
 
 ## 4. サンプルプログラムの実行
 
-サンプルプログラムは、codamaでウェイク・アップ・ワードを検出すると、AIエージェントとの対話モードを開始し、エージェントから返答が来ると、ウェイク・アップ・ワードを待つというプログラムとなっています。
+サンプルプログラムは、codamaでウェイク・アップ・ワードを検出すると、AIエージェントとの対話モードを開始し、AIエージェントから返答が来ると、ウェイク・アップ・ワードを待つというプログラムとなっています。
 
 codamaはウェイク・アップ・ワードを検出するとGPIOの27をHIGHに設定します。また、AIエージェントは音声入力をON/OFFする機能を備えており、それらを用いてウェイク・アップ・ワードの検出と対話を実現しています。
 
@@ -112,7 +112,7 @@ $ python3 main.py
 
 うまく反応が返ってきたらAIエージェント側の設定をいろいろ試してみましょう。ドコモAIエージェントAPIの[ドキュメントサイト](https://docs.sebastien.ai/documents/)や[Speak SDK for Python](https://github.com/docomoDeveloperSupport/speak-python-sdk)を参考にしてください。
 
-#### 補足)エラーメッセージ発生時の対処（Device Token の取り直し）
+#### (補足)エラーメッセージ発生時の対処(Device Token の取り直し)
 
 上記コマンド実行時に
 ```
