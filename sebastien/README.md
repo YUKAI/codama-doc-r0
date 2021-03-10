@@ -4,9 +4,9 @@ codamaを取り付けたRaspberryPiはNTTドコモが提供する[ドコモAIエ
 
 まず、以下の設定ガイドを参照し、I2S接続でのcodamaのセットアップ、ウェイクアップワードの作成を終わらせてください。
 
-1. [Raspberry Piを設定する](../../wiki/Raspberry-Pi-Setup)
-2. [codamaをRaspberry Piに取り付け、設定する](../../wiki/Codama-Setup)
-3. [ウェイク・アップ・ワードの作成、動作確認をする](../../wiki/regist-wake-up-word)
+1. [Raspberry Piを設定する](../../../wiki/Raspberry-Pi-Setup)
+2. [codamaをRaspberry Piに取り付け、設定する](../../../wiki/Codama-Setup)
+3. [ウェイク・アップ・ワードの作成、動作確認をする](../../../wiki/regist-wake-up-word)
 
 ## 1. スピーカーの取り付け
 
