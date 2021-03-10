@@ -110,7 +110,7 @@ SAVE ./.trial_refresh_token : XXXXXXXX-XXXX-XXXX-XXXX- XXXXXXXX
 $ python3 main.py
 ```
 
-うまく反応が返ってきたらAIエージェント側の設定をいろいろ試してみましょう。[AIエージェントのドキュメントサイト](https://docs.sebastien.ai/documents/)や[AIエージェントのPythonのSDK](https://github.com/docomoDeveloperSupport/speak-python-sdk)を参考にしてください。
+うまく反応が返ってきたらAIエージェント側の設定をいろいろ試してみましょう。ドコモAIエージェントAPIの[ドキュメントサイト](https://docs.sebastien.ai/documents/)や[Speak SDK for Python](https://github.com/docomoDeveloperSupport/speak-python-sdk)を参考にしてください。
 
 #### 補足)エラーメッセージ発生時の対処（Device Token の取り直し）
 
