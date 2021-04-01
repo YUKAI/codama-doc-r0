@@ -1,6 +1,7 @@
 # ドコモAIエージェントAPIを利用したサンプルプログラムの実行
 
-codamaを取り付けたRaspberryPiはNTTドコモが提供する[ドコモAIエージェントAPI](https://www.nttdocomo.co.jp/biz/service/ai_agent_api/)を利用して音声による対話を実装することが可能です。
+codamaを取り付けたRaspberry PiはNTTドコモが提供するドコモAIエージェントAPIのSpeak SDK for Pythonを利用して音声による対話を実現することが可能です。
+(Speak SDK for Pythonの入手方法はドコモAIエージェントのドキュメントサイトよりご確認ください)
 
 まず、以下の設定ガイドを参照し、I2S接続でのcodamaのセットアップ、ウェイクアップワードの作成を終わらせてください。
 
@@ -110,7 +111,7 @@ SAVE ./.trial_refresh_token : XXXXXXXX-XXXX-XXXX-XXXX- XXXXXXXX
 $ python3 main.py
 ```
 
-うまく反応が返ってきたらAIエージェント側の設定をいろいろ試してみましょう。ドコモAIエージェントAPIの[ドキュメントサイト](https://docs.sebastien.ai/documents/)や[Speak SDK for Python](https://github.com/docomoDeveloperSupport/speak-python-sdk)を参考にしてください。
+うまく反応が返ってきたらAIエージェント側の設定をいろいろ試してみましょう。ドコモAIエージェントAPIの[ドキュメントサイト](https://docs.sebastien.ai/documents/)を参考にしてください。
 
 #### (補足)エラーメッセージ発生時の対処(Device Token の取り直し)
 
