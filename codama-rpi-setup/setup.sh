@@ -52,8 +52,10 @@ if [ $? -eq 0 ]; then
     if [ ! -e /etc/asound.conf ]; then
         sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /etc/asound.conf
     else
-        cp $RPI_SETUP_DIR/resources/asoundrc_vf ~/.asoundrc
-        sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /root/.asoundrc
+        if ! grep -q "VocalFusion" /etc/asound.conf; then
+            cp $RPI_SETUP_DIR/resources/asoundrc_vf ~/.asoundrc
+            sudo cp $RPI_SETUP_DIR/resources/asoundrc_vf /root/.asoundrc
+        fi
     fi
 else
     cp $RPI_SETUP_DIR/resources/asoundrc_vf ~/.asoundrc
