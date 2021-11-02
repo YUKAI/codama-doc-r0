@@ -31,16 +31,11 @@ AIエージェントと連携するライブラリの動作に必要なものを
 $ sudo apt install pulseaudio
 ```
 
-ライブラリをインストールします。
+AIエージェントのSDK及びサンプルプログラムについては、[ドコモエージェントAPI](https://docs.sebastien.ai/documents/basic03/)へお問い合わせ頂き入手してください。
+
+SDK及びサンプルプログラムを準備した後、動作に必要なものをインストールします。
 
 ```
-$ pip3 install --user https://github.com/docomoDeveloperSupport/speak-python-sdk/releases/download/v1.16.2/speak-1.16.2-cp37-cp37m-linux_armv7l. whl
-```
-
-サンプルプログラムを用意し、動作に必要なものをインストールします。
-
-```
-$ git clone -b trial https://github.com/docomoDeveloperSupport/speak-python-sample.git
 $ pip3 install pyuv
 ```
 
