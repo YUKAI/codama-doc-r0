@@ -149,6 +149,15 @@ else
   sudo cp -p ../utils/codama_usb /usr/local/bin/codama_usb
 fi
 
+REQUIRED_LIB_READLINE="libreadline.so.7"
+REQUIRED_LIB_READLINE_PATH=$(find /lib/ -name $REQUIRED_LIB_READLINE)
+if [ -z "$REQUIRED_LIB_READLINE_PATH" ]; then # if the version of libreadline.so codama_dfu_i2c requires does not exsist
+    # Use latest libreadline instead. See #issue1
+    LATEST_LIB_READLINE_PATH=$(find /lib/ -name "libreadline.so*" | sort | tail -1)
+    LIB_READLINE_DIR=$(dirname $LATEST_LIB_READLINE_PATH)
+    sudo ln -s $LATEST_LIB_READLINE_PATH $LIB_READLINE_DIR/$REQUIRED_LIB_READLINE
+fi
+
 echo "To enable I2S and I2C, this Raspberry Pi must be rebooted."
 
 popd > /dev/null
