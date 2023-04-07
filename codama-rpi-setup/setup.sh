@@ -77,7 +77,7 @@ sudo /etc/init.d/alsa-utils restart
 
 
 # Configure the I2C - disable the default built-in driver
-if [ "`uname -r | cut -d. -f1`" != "5" ] ; then
+if [ "`uname -r | cut -d. -f1`" -le "4" ] ; then
     sudo sed -i -e 's/#\?dtparam=i2c_arm=on/dtparam=i2c_arm=off/' /boot/config.txt
     if ! grep -q "i2c-bcm2708" /etc/modules-load.d/modules.conf; then
         sudo sh -c 'echo i2c-bcm2708 >> /etc/modules-load.d/modules.conf'
@@ -130,7 +130,7 @@ fi
 
 # setup Utils
 if [ "`uname -m`" = "aarch64" ] ; then
-  if [ "`uname -r | cut -d. -f1`" != "5" ] ; then
+  if [ "`uname -r | cut -d. -f1`" -le "4" ] ; then
     sudo cp -p ../utils/codama_i2c-64 /usr/local/bin/codama_i2c
     sudo cp -p ../utils/codama_dfu_i2c-64 /usr/local/bin/codama_dfu_i2c
   else
@@ -139,7 +139,7 @@ if [ "`uname -m`" = "aarch64" ] ; then
   fi
   sudo cp -p ../utils/codama_usb-64 /usr/local/bin/codama_usb
 else
-  if [ "`uname -r | cut -d. -f1`" != "5" ] ; then
+  if [ "`uname -r | cut -d. -f1`" -le "4" ] ; then
     sudo cp -p ../utils/codama_i2c /usr/local/bin/codama_i2c
     sudo cp -p ../utils/codama_dfu_i2c /usr/local/bin/codama_dfu_i2c
   else
