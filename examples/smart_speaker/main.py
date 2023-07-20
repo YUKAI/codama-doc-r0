@@ -6,10 +6,10 @@ import api
 import os
 from dotenv import load_dotenv
 
-load_dotenv('.env') 
+load_dotenv('../.env') 
 
-REC_FILE = "sound/rec.wav"
-OUTPUT_FILE = "sound/output.wav"
+REC_FILE = "../sound/rec.wav"
+OUTPUT_FILE = "../sound/output.wav"
 
 AUDIO_DEVICE_NUM = 8
 DOWN_SAMPLE = 1
@@ -17,15 +17,15 @@ SAMPLE_RATE = 16000
 CHANNELS = 1
 
 # ChatGPTのキャラクター設定
-CHAT_CHARACTER = '''あなたは幼児向け英会話教室の教師です。
+CHAT_CHARACTER = '''あなたは英会話教室の教師です。
 全て英語の歌にして返答します。必ず3行で返答します。
-英単語は30words以上50words以内で返答します。行末には必ずピリオドを打ちます。
-中学生でもわかるような簡単な英単語だけを使ってください。'''
+簡単な英単語だけを使ってください。'''
 
+# porcupineの設定
 porcupine = pvporcupine.create(
   access_key=os.environ.get("ACCESS_KEY"),
-  keyword_paths=[os.environ.get("KEYWORD_FILE_PATH")],
-  model_path="porcupine_params_ja.pv"
+  keyword_paths=["../kodama_ja_raspberry-pi_v2_2_0.ppn"],
+  model_path="../porcupine_params_ja.pv"
 )
 q = queue.Queue()
 
@@ -70,9 +70,13 @@ def run():
 
                 # 3秒間録音
                 codama.record(REC_FILE, 3)
+                # Whisper APIで音声データをテキストに変換
                 input_text = openai.whisper(REC_FILE)
+                # ChatGPT APIで返答を生成
                 reply_text = openai.chatgpt(input_text, CHAT_CHARACTER)
+                # Google Cloud Text-to-Speech APIで音声合成
                 google.synthesize_text(reply_text, OUTPUT_FILE)
+                # スピーカーで再生
                 codama.play(OUTPUT_FILE)
 
     except KeyboardInterrupt:

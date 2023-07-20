@@ -56,3 +56,6 @@ secret-key.json
 
 # porcupine file
 *.ppn
+
+# recorded file
+examples/sound/*.wav

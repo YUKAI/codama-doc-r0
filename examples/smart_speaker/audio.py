@@ -13,7 +13,7 @@ class Audio:
         '''Play an audio file'''
         data, samplerate = sf.read(file)
         converted_data = signal.resample(data, int(len(data) * self.fs / samplerate))
-        sf.write("sound/converted_test.wav", converted_data, self.fs)
+        sf.write("../sound/converted_test.wav", converted_data, self.fs)
         sd.play(converted_data, self.fs)
         sd.wait()
 
