@@ -18,7 +18,7 @@ sd.default.device = AUDIO_DEVICE_NUM
 # porcupineの設定
 porcupine = pvporcupine.create(
   access_key=os.environ.get("ACCESS_KEY"),
-  keyword_paths=["kodama_ja_raspberry-pi_v2_2_0.ppn"],
+  keyword_paths=["codama_ja_raspberry-pi_v2_2_0.ppn"],
   model_path="porcupine_params_ja.pv"
 )
 
