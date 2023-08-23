@@ -26,8 +26,8 @@ CHAT_CHARACTER = '''あなたは英会話教室の教師です。
 sd.default.device = AUDIO_DEVICE_NUM
 
 codama = audio.Audio(SAMPLE_RATE, CHANNELS)
-openai = api.OpenAI()
-google = api.Google()
+myopenai = api.OpenAI()
+mygoogle = api.Google()
 
 # porcupineの設定
 porcupine = pvporcupine.create(
@@ -71,11 +71,11 @@ def run():
                     # 3秒間録音
                     codama.record(REC_FILE, 3)
                     # Whisper APIで音声データをテキストに変換
-                    input_text = openai.whisper(REC_FILE)
+                    input_text = myopenai.whisper(REC_FILE)
                     # ChatGPT APIで返答を生成
-                    reply_text = openai.chatgpt(input_text, CHAT_CHARACTER)
+                    reply_text = myopenai.chatgpt(input_text, CHAT_CHARACTER)
                     # Google Cloud Text-to-Speech APIで音声合成
-                    google.synthesize_text(reply_text, OUTPUT_FILE)
+                    mygoogle.synthesize_text(reply_text, OUTPUT_FILE)
                     # スピーカーで再生
                     codama.play(OUTPUT_FILE)
                     break
