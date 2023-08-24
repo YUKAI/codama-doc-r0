@@ -5,7 +5,6 @@ import numpy as np
 import audio
 import api
 import openai
-import pyaudio
 from pydub import AudioSegment
 from io import BytesIO
 from google.cloud import texttospeech
@@ -24,13 +23,12 @@ REC_FILE = "../sound/rec.wav"
 OUTPUT_FILE = "../sound/output.wav"
 
 # ChatGPTのキャラクター設定
-CHAT_CHARACTER = '''あなたはなんでも解説してくれる博士です。ただし一文ごとに/を入れて話してください。'''
+CHAT_CHARACTER = '''あなたはなんでも解説してくれる博士です。6行で説明してください。ただし一文ごとに/を入れて話してください。'''
 
 sd.default.device = AUDIO_DEVICE_NUM
 
 codama = audio.Audio(SAMPLE_RATE, CHANNELS)
 myopenai = api.OpenAI()
-# google = api.Google()
 
 openai.api_key = os.environ.get("OPEN_AI_API_KEY")
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "secret-key.json"
@@ -80,14 +78,12 @@ def run():
                     # Whisper APIで音声データをテキストに変換
                     input_text = myopenai.whisper(REC_FILE)
 
-                    # 音声合成のストリーミング開始
-                    p = pyaudio.PyAudio()
-                    stream = p.open(
-                        format=pyaudio.paInt16,
-                        channels=1,
-                        rate=24000,
-                        output=True
+                    stream = sd.OutputStream(
+                        samplerate=SAMPLE_RATE,
+                        dtype="int16",
+                        channels=CHANNELS,
                     )
+                    stream.start()
 
                     # ChatGPTの返答（ストリーミングモード）
                     response = openai.ChatCompletion.create(
@@ -124,8 +120,7 @@ def run():
                                 # 音声データをPyDubのAudioSegmentに変換
                                 audio_segment = AudioSegment.from_mp3(BytesIO(response.audio_content))
 
-                                # PyAudioで再生
-                                stream.write(audio_segment.raw_data)
+                                stream.write(np.array(audio_segment.get_array_of_samples(), dtype=np.int16))
                                 word = ''
 
                     break
@@ -136,9 +131,8 @@ def run():
         sd.stop()
         while not q.empty():
             q.get(block=False)
-        stream.stop_stream()
+        stream.stop()
         stream.close()
-        p.terminate()
 
 if __name__ == "__main__":
     run()
