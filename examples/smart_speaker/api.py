@@ -1,9 +1,18 @@
+import pvporcupine
 import openai
 from google.cloud import texttospeech
 import os
 from dotenv import load_dotenv
 
 load_dotenv('../.env') 
+
+class Porcupine():
+    def __init__(self):
+        self.porcupine = pvporcupine.create(
+            access_key=os.environ.get("ACCESS_KEY"),
+            keyword_paths=["../codama_ja_raspberry-pi_v2_2_0.ppn"],
+            model_path="../porcupine_params_ja.pv"
+        ) 
 
 class OpenAI():
     def __init__(self):
@@ -73,3 +82,18 @@ class Google():
 
         with open(output_file, "wb") as out:
             out.write(response.audio_content)
+
+    def synthesize_response(self, text: str):
+        input_text = texttospeech.SynthesisInput(text=text)
+        voice = texttospeech.VoiceSelectionParams(
+            language_code="ja-JP",
+            name="ja-JP-Wavenet-D",
+        )
+        audio_config = texttospeech.AudioConfig(
+            audio_encoding=texttospeech.AudioEncoding.MP3
+        )
+
+        response = self.client.synthesize_speech(
+            input=input_text, voice=voice, audio_config=audio_config
+        )
+        return response
